@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+
+import sys
+import os
+import argparse
+import shutil
+
+ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
+
+def main():
+  parser = argparse.ArgumentParser()
+  parser.add_argument("PATH")
+  args = parser.parse_args()
+  path = args.PATH
+  if not os.path.exists(path):
+    os.mkdir(path)
+  if not os.path.isdir(path):
+    print(f"'{path}' is a file but should be directory", file=sys.stderr)
+
+  names = ["nginx.conf", "index.html"]
+  for name in names:
+    shutil.copy(os.path.join(ROOT_DIR, name), os.path.join(path, name))
+
+  return 0
+
+if __name__ == '__main__':
+  sys.exit(main())
+
