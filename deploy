@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+#apt-get update
+#apt-get install nginx
+#/etc/init.d/nginx start
+cp index.html /var/www/html/index.html
+cp nginx.conf /etc/nginx/nginx.conf
+/etc/init.d/nginx reload
+
